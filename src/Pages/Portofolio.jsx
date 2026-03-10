@@ -3,7 +3,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import { supabase } from "../supabase"; 
 
 import PropTypes from "prop-types";
-import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
@@ -16,6 +15,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Certificate from "../components/Certificate";
 import { Code, Award, Boxes } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
 
 
 const ToggleButton = ({ onClick, isShowingMore }) => (
