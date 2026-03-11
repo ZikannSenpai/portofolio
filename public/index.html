@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZikaNyawDev - Portofolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKx3nfrFqD5xJbXjI+pQ1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-blue: #3B82F6; /* Tailwind blue-500 */
+            --dark-bg: #1A202C; /* Tailwind gray-900 */
+            --dark-card: #2D3748; /* Tailwind gray-800 */
+        }
+        body {
+            font-family: 'Inter', sans-serif; /* Menggunakan font Inter atau Sans-serif default */
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .zoomable-card:active {
+            transform: scale(0.95);
+        }
+        .typing-animation::after {
+            content: '|';
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-blue); }
+        }
+        /* Welcome screen animation */
+        #welcome-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white leading-relaxed">
+
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center transition-opacity duration-1000 ease-out">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-blue-500 mb-4 animate-pulse">ZikaNyawDev</h1>
+            <p class="text-xl md:text-2xl text-gray-300">Memuat Portofolio Terbaik...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-gray-800 p-4 shadow-lg fixed w-full z-40">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300">ZikaNyawDev - Portofolio</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a>
+                <a href="#about" class="text-white hover:text-blue-400 transition-colors duration-300">About</a>
+                <a href="#projects" class="text-white hover:text-blue-400 transition-colors duration-300">Projects</a>
+                <a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 absolute top-full left-0 w-full pb-4 shadow-lg">
+            <nav class="flex flex-col items-center space-y-4">
+                <a href="#home" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">Home</a>
+                <a href="#about" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">About</a>
+                <a href="#projects" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">Projects</a>
+                <a href="#contact" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Welcome/Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center pt-20 px-4 bg-gradient-to-br from-gray-900 to-gray-800">
+            <h1 class="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+                Halo, saya <span class="text-blue-500">ZikaNyawDev</span>
+            </h1>
+            <p class="text-xl md:text-3xl text-gray-300 mb-8 typing-animation" id="typing-text"></p>
+            <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Lihat Portofolio Saya</a>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-gray-900 fade-in-section">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-blue-400 mb-12">Tentang Saya</h2>
+                <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl text-lg text-gray-300">
+                    <p class="mb-4">Saya adalah seorang pengembang web dengan passion dalam menciptakan solusi digital yang inovatif dan efisien. Berbekal pengalaman dalam berbagai teknologi frontend dan backend, saya berdedikasi untuk membangun aplikasi web yang tidak hanya fungsional tetapi juga menarik secara visual dan mudah digunakan.</p>
+                    <p class="mb-4">Keahlian saya meliputi pengembangan aplikasi web responsif, integrasi API, manajemen database, dan penerapan praktik terbaik dalam pengembangan perangkat lunak.</p>
+                    <p>Saya selalu antusias untuk belajar hal baru dan menghadapi tantangan teknologi yang kompleks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Overview Section -->
+        <section id="projects" class="py-20 bg-gray-800 fade-in-section">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-blue-400 mb-12">Proyek Saya</h2>
+
+                <!-- Total Project -->
+                <div class="bg-gray-900 p-8 rounded-lg shadow-xl mb-12 zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <h3 class="text-3xl font-bold text-white mb-4">Total Proyek</h3>
+                    <p class="text-blue-400 text-5xl font-extrabold text-center">25+</p>
+                    <p class="text-gray-300 text-center mt-4">Proyek telah berhasil dikembangkan dengan berbagai skala dan teknologi.</p>
+                </div>
+
+                <!-- View Project & Website Project (Combined for layout) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-xl zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <h3 class="text-3xl font-bold text-white mb-4">Lihat Proyek</h3>
+                        <p class="text-gray-300 text-lg">Jelajahi berbagai proyek yang telah saya kerjakan, dari aplikasi web sederhana hingga sistem yang kompleks.</p>
+                        <a href="#" class="mt-6 inline-block text-blue-400 hover:text-blue-300 transition-colors duration-300 font-semibold">Selengkapnya <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-xl zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <h3 class="text-3xl font-bold text-white mb-4">Proyek Website</h3>
+                        <p class="text-gray-300 text-lg">Fokus pada proyek-proyek yang melibatkan pengembangan website dan aplikasi berbasis web.</p>
+                        <a href="#" class="mt-6 inline-block text-blue-400 hover:text-blue-300 transition-colors duration-300 font-semibold">Selengkapnya <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Portofolio Showcase -->
+                <div class="bg-gray-900 p-8 rounded-lg shadow-xl zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <h3 class="text-3xl font-bold text-white mb-4">Portofolio Showcase</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <!-- Contoh item portofolio -->
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                            <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Project+1" alt="Project 1" class="rounded-lg mb-4 w-full h-auto">
+                            <h4 class="text-xl font-semibold text-blue-300 mb-2">Aplikasi E-commerce Modern</h4>
+                            <p class="text-gray-400 text-sm">Frontend React, Backend Node.js, Database MongoDB.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-400 hover:text-blue-300 text-sm">Lihat Detail <i class="fas fa-external-link-alt ml-1"></i></a>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                            <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Project+2" alt="Project 2" class="rounded-lg mb-4 w-full h-auto">
+                            <h4 class="text-xl font-semibold text-blue-300 mb-2">Sistem Manajemen Inventaris</h4>
+                            <p class="text-gray-400 text-sm">Laravel, Vue.js, MySQL.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-400 hover:text-blue-300 text-sm">Lihat Detail <i class="fas fa-external-link-alt ml-1"></i></a>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                            <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Project+3" alt="Project 3" class="rounded-lg mb-4 w-full h-auto">
+                            <h4 class="text-xl font-semibold text-blue-300 mb-2">Website Portofolio Interaktif</h4>
+                            <p class="text-gray-400 text-sm">HTML, CSS, JavaScript Vanilla, GSAP.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-400 hover:text-blue-300 text-sm">Lihat Detail <i class="fas fa-external-link-alt ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Hubungi Saya Section -->
+        <section id="contact-me" class="py-20 bg-gray-900 text-center fade-in-section">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-blue-400 mb-8">Tertarik Berkolaborasi?</h2>
+                <p class="text-gray-300 text-xl max-w-2xl mx-auto mb-10">Jangan ragu untuk menghubungi saya untuk proyek baru, peluang kerja, atau sekadar berdiskusi.</p>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Hubungi Saya Sekarang</a>
+            </div>
+        </section>
+
+        <!-- Contact With Me Section -->
+        <section id="contact" class="py-20 bg-gray-800 fade-in-section">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-blue-400 mb-12">Terhubung Dengan Saya</h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <a href="https://wa.me/6281234567890" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
+                        <i class="fab fa-whatsapp text-5xl text-green-500 mb-4"></i>
+                        <span class="text-xl font-semibold text-white">WhatsApp</span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/yourchannel" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
+                        <i class="fab fa-youtube text-5xl text-red-600 mb-4"></i>
+                        <span class="text-xl font-semibold text-white">YouTube</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@yourtiktok" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
+                        <i class="fab fa-tiktok text-5xl text-blue-400 mb-4"></i>
+                        <span class="text-xl font-semibold text-white">TikTok</span>
+                    </a>
+                    <a href="https://github.com/yourgithub" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
+                        <i class="fab fa-github text-5xl text-gray-300 mb-4"></i>
+                        <span class="text-xl font-semibold text-white">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-400 border-t border-gray-700">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2023 ZikaNyawDev - Portofolio. All rights reserved.</p>
+            <p class="mt-2 text-sm">Dibuat dengan <i class="fas fa-heart text-red-500 mx-1"></i> oleh Dardcor AI.</p>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
