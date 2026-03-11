@@ -1,42 +1,27 @@
-const express = require("express")
-const fs = require("fs")
-const path = require("path")
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 3000;
 
-const app = express()
+// Middleware untuk menyajikan file statis dari folder public
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.json())
-app.use(express.static("public"))
+// Contoh endpoint API untuk data proyek (jika ingin dinamis)
+app.get('/api/projects', (req, res) => {
+  const projects = [
+    { title: 'Project 1', description: 'Deskripsi proyek 1', image: 'https://via.placeholder.com/300' },
+    { title: 'Project 2', description: 'Deskripsi proyek 2', image: 'https://via.placeholder.com/300' },
+    { title: 'Project 3', description: 'Deskripsi proyek 3', image: 'https://via.placeholder.com/300' },
+  ];
+  res.json(projects);
+});
 
-const DB = "/tmp/messages.json"
+// Contoh endpoint API untuk skills
+app.get('/api/skills', (req, res) => {
+  const skills = ['JavaScript', 'React', 'Node.js', 'Tailwind CSS', 'Express', 'MongoDB'];
+  res.json(skills);
+});
 
-if(!fs.existsSync(DB)){
- fs.writeFileSync(DB,"[]")
-}
-
-app.post("/api/contact",(req,res)=>{
-
- const {name,contact,message} = req.body
-
- if(!name || !contact || !message){
-  return res.status(400).json({status:false})
- }
-
- const data = JSON.parse(fs.readFileSync(DB))
-
- data.push({
-  id:Date.now(),
-  name,
-  contact,
-  message
- })
-
- fs.writeFileSync(DB,JSON.stringify(data))
-
- res.json({status:true})
-})
-
-app.get("*",(req,res)=>{
- res.sendFile(path.join(__dirname,"public/index.html"))
-})
-
-module.exports = app
+app.listen(port, () => {
+  console.log(`🚀 Server berjalan di http://localhost:${port}`);
+});
