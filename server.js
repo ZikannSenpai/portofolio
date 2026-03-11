@@ -1,19 +1,60 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = process.env.PORT || 3000;
+const express = require("express")
+const fs = require("fs")
+const path = require("path")
 
-// Middleware untuk JSON (form kontak)
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+const app = express()
+const PORT = process.env.PORT || 3000
 
-// Endpoint untuk menerima pesan dari form kontak
-app.post('/contact', (req, res) => {
-    const { name, email, message } = req.body;
-    console.log(`📩 Pesan dari ${name} (${email}): ${message}`);
-    res.json({ status: 'success', message: 'Pesan terkirim (simulasi)' });
-});
+app.use(express.json())
+app.use(express.static("public"))
 
-app.listen(port, () => {
-    console.log(`🚀 Server berjalan di http://localhost:${port}`);
-});
+const DB = "./data/messages.json"
+
+if(!fs.existsSync("./data")){
+ fs.mkdirSync("./data")
+}
+
+if(!fs.existsSync(DB)){
+ fs.writeFileSync(DB,"[]")
+}
+
+app.post("/api/contact",(req,res)=>{
+
+ const {name,contact,message} = req.body
+
+ if(!name || !contact || !message){
+  return res.status(400).json({status:false,msg:"data kosong"})
+ }
+
+ const data = JSON.parse(fs.readFileSync(DB))
+
+ const newMsg = {
+  id: Date.now(),
+  name,
+  contact,
+  message,
+  date: new Date()
+ }
+
+ data.push(newMsg)
+
+ fs.writeFileSync(DB,JSON.stringify(data,null,2))
+
+ res.json({
+  status:true,
+  msg:"pesan terkirim"
+ })
+})
+
+app.get("/api/contact",(req,res)=>{
+ const data = JSON.parse(fs.readFileSync(DB))
+ res.json(data)
+})
+
+app.get("*",(req,res)=>{
+ res.sendFile(path.join(__dirname,"public/index.html"))
+})
+
+app.listen(PORT,()=>{
+ console.log("server jalan di "+PORT)
+})
