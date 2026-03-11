@@ -3,14 +3,17 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files from the 'public' directory
+// Middleware untuk JSON (form kontak)
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Fallback for any other route to serve index.html
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Endpoint untuk menerima pesan dari form kontak
+app.post('/contact', (req, res) => {
+    const { name, email, message } = req.body;
+    console.log(`📩 Pesan dari ${name} (${email}): ${message}`);
+    res.json({ status: 'success', message: 'Pesan terkirim (simulasi)' });
 });
 
 app.listen(port, () => {
-    console.log(`ZikaNyawDev - Portofolio backend berjalan di http://localhost:${port}`);
+    console.log(`🚀 Server berjalan di http://localhost:${port}`);
 });

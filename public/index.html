@@ -1,205 +1,326 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZikaNyawDev - Portofolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKx3nfrFqD5xJbXjI+pQ1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --primary-blue: #3B82F6; /* Tailwind blue-500 */
-            --dark-bg: #1A202C; /* Tailwind gray-900 */
-            --dark-card: #2D3748; /* Tailwind gray-800 */
-        }
-        body {
-            font-family: 'Inter', sans-serif; /* Menggunakan font Inter atau Sans-serif default */
-        }
-        .fade-in-section {
+        /* Animasi fade in/out saat scroll */
+        .fade-in {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, transform;
         }
-        .fade-in-section.is-visible {
+        .fade-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .zoomable-card:active {
+
+        /* Efek zoom saat ditekan (untuk card, tombol, ikon) */
+        .zoom-effect {
+            transition: transform 0.1s ease;
+        }
+        .zoom-effect:active {
             transform: scale(0.95);
         }
-        .typing-animation::after {
-            content: '|';
-            animation: blink-caret 0.75s step-end infinite;
+
+        /* Kursor untuk teks mengetik */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            margin-left: 4px;
+            background-color: #3b82f6; /* biru */
+            animation: blink 0.7s infinite;
         }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-blue); }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
-        /* Welcome screen animation */
-        #welcome-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+
+        /* Warna biru dominan untuk aksen */
+        .bg-blue-custom { background-color: #3b82f6; }
+        .text-blue-custom { color: #3b82f6; }
+        .border-blue-custom { border-color: #3b82f6; }
     </style>
 </head>
-<body class="bg-gray-900 text-white leading-relaxed">
+<body class="bg-black text-white font-sans">
 
-    <!-- Welcome Screen -->
-    <div id="welcome-screen" class="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center transition-opacity duration-1000 ease-out">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-blue-500 mb-4 animate-pulse">ZikaNyawDev</h1>
-            <p class="text-xl md:text-2xl text-gray-300">Memuat Portofolio Terbaik...</p>
+    <!-- HEADER (sticky) -->
+    <header class="sticky top-0 bg-black bg-opacity-90 backdrop-blur-sm z-50 border-b border-blue-600 py-4 px-6 flex justify-between items-center">
+        <div class="text-xl font-bold text-blue-400">
+            <i class="fas fa-code mr-2"></i>ZikaNyawDev - Portofolio
         </div>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-gray-800 p-4 shadow-lg fixed w-full z-40">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="#" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300">ZikaNyawDev - Portofolio</a>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#home" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a>
-                <a href="#about" class="text-white hover:text-blue-400 transition-colors duration-300">About</a>
-                <a href="#projects" class="text-white hover:text-blue-400 transition-colors duration-300">Projects</a>
-                <a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 absolute top-full left-0 w-full pb-4 shadow-lg">
-            <nav class="flex flex-col items-center space-y-4">
-                <a href="#home" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">Home</a>
-                <a href="#about" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">About</a>
-                <a href="#projects" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">Projects</a>
-                <a href="#contact" class="block text-white hover:text-blue-400 transition-colors duration-300 py-2">Contact</a>
-            </nav>
-        </div>
+        <nav class="space-x-6 text-sm md:text-base">
+            <a href="#welcome" class="hover:text-blue-400 transition">Home</a>
+            <a href="#about" class="hover:text-blue-400 transition">About</a>
+            <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+            <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+        </nav>
     </header>
 
-    <main>
-        <!-- Welcome/Hero Section -->
-        <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center pt-20 px-4 bg-gradient-to-br from-gray-900 to-gray-800">
-            <h1 class="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-                Halo, saya <span class="text-blue-500">ZikaNyawDev</span>
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- WELCOME PAGE (Animasi) -->
+        <section id="welcome" class="h-screen flex flex-col justify-center items-center text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                <span class="text-blue-500">Welcome</span> to My World
             </h1>
-            <p class="text-xl md:text-3xl text-gray-300 mb-8 typing-animation" id="typing-text"></p>
-            <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Lihat Portofolio Saya</a>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="py-20 bg-gray-900 fade-in-section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center text-blue-400 mb-12">Tentang Saya</h2>
-                <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl text-lg text-gray-300">
-                    <p class="mb-4">Saya adalah seorang pengembang web dengan passion dalam menciptakan solusi digital yang inovatif dan efisien. Berbekal pengalaman dalam berbagai teknologi frontend dan backend, saya berdedikasi untuk membangun aplikasi web yang tidak hanya fungsional tetapi juga menarik secara visual dan mudah digunakan.</p>
-                    <p class="mb-4">Keahlian saya meliputi pengembangan aplikasi web responsif, integrasi API, manajemen database, dan penerapan praktik terbaik dalam pengembangan perangkat lunak.</p>
-                    <p>Saya selalu antusias untuk belajar hal baru dan menghadapi tantangan teknologi yang kompleks.</p>
-                </div>
+            <p class="text-xl text-gray-400">ZikaNyawDev - Creative Developer</p>
+            <div class="mt-8 animate-bounce">
+                <i class="fas fa-chevron-down text-blue-400 text-2xl"></i>
             </div>
         </section>
 
-        <!-- Projects Overview Section -->
-        <section id="projects" class="py-20 bg-gray-800 fade-in-section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center text-blue-400 mb-12">Proyek Saya</h2>
-
-                <!-- Total Project -->
-                <div class="bg-gray-900 p-8 rounded-lg shadow-xl mb-12 zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <h3 class="text-3xl font-bold text-white mb-4">Total Proyek</h3>
-                    <p class="text-blue-400 text-5xl font-extrabold text-center">25+</p>
-                    <p class="text-gray-300 text-center mt-4">Proyek telah berhasil dikembangkan dengan berbagai skala dan teknologi.</p>
+        <!-- FOTO PROFIL + JUDUL TYPING -->
+        <section id="profile" class="py-16 grid md:grid-cols-2 gap-8 items-center fade-in">
+            <!-- Foto profil (placeholder) -->
+            <div class="flex justify-center">
+                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg shadow-blue-500/50">
+                    <img src="https://picsum.photos/300/300?random=1" alt="Profile" class="w-full h-full object-cover">
                 </div>
-
-                <!-- View Project & Website Project (Combined for layout) -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="bg-gray-900 p-8 rounded-lg shadow-xl zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
-                        <h3 class="text-3xl font-bold text-white mb-4">Lihat Proyek</h3>
-                        <p class="text-gray-300 text-lg">Jelajahi berbagai proyek yang telah saya kerjakan, dari aplikasi web sederhana hingga sistem yang kompleks.</p>
-                        <a href="#" class="mt-6 inline-block text-blue-400 hover:text-blue-300 transition-colors duration-300 font-semibold">Selengkapnya <i class="fas fa-arrow-right ml-2"></i></a>
-                    </div>
-                    <div class="bg-gray-900 p-8 rounded-lg shadow-xl zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
-                        <h3 class="text-3xl font-bold text-white mb-4">Proyek Website</h3>
-                        <p class="text-gray-300 text-lg">Fokus pada proyek-proyek yang melibatkan pengembangan website dan aplikasi berbasis web.</p>
-                        <a href="#" class="mt-6 inline-block text-blue-400 hover:text-blue-300 transition-colors duration-300 font-semibold">Selengkapnya <i class="fas fa-arrow-right ml-2"></i></a>
-                    </div>
+            </div>
+            <!-- Judul dengan animasi mengetik -->
+            <div>
+                <h2 class="text-3xl md:text-4xl font-semibold mb-2">Halo, saya <span class="text-blue-400">ZikaNyawDev</span></h2>
+                <div class="text-xl md:text-2xl text-gray-300 flex items-center">
+                    Saya seorang&nbsp;
+                    <span id="typing-text" class="text-blue-400 font-medium"></span>
+                    <span class="cursor"></span>
                 </div>
+                <p class="mt-4 text-gray-400">Membangun pengalaman digital yang menarik dan fungsional.</p>
+            </div>
+        </section>
 
-                <!-- Portofolio Showcase -->
-                <div class="bg-gray-900 p-8 rounded-lg shadow-xl zoomable-card transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <h3 class="text-3xl font-bold text-white mb-4">Portofolio Showcase</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                        <!-- Contoh item portofolio -->
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                            <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Project+1" alt="Project 1" class="rounded-lg mb-4 w-full h-auto">
-                            <h4 class="text-xl font-semibold text-blue-300 mb-2">Aplikasi E-commerce Modern</h4>
-                            <p class="text-gray-400 text-sm">Frontend React, Backend Node.js, Database MongoDB.</p>
-                            <a href="#" class="mt-4 inline-block text-blue-400 hover:text-blue-300 text-sm">Lihat Detail <i class="fas fa-external-link-alt ml-1"></i></a>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                            <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Project+2" alt="Project 2" class="rounded-lg mb-4 w-full h-auto">
-                            <h4 class="text-xl font-semibold text-blue-300 mb-2">Sistem Manajemen Inventaris</h4>
-                            <p class="text-gray-400 text-sm">Laravel, Vue.js, MySQL.</p>
-                            <a href="#" class="mt-4 inline-block text-blue-400 hover:text-blue-300 text-sm">Lihat Detail <i class="fas fa-external-link-alt ml-1"></i></a>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                            <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Project+3" alt="Project 3" class="rounded-lg mb-4 w-full h-auto">
-                            <h4 class="text-xl font-semibold text-blue-300 mb-2">Website Portofolio Interaktif</h4>
-                            <p class="text-gray-400 text-sm">HTML, CSS, JavaScript Vanilla, GSAP.</p>
-                            <a href="#" class="mt-4 inline-block text-blue-400 hover:text-blue-300 text-sm">Lihat Detail <i class="fas fa-external-link-alt ml-1"></i></a>
-                        </div>
+        <!-- ABOUT ME & TOTAL PROJECT -->
+        <section id="about" class="py-16 grid md:grid-cols-2 gap-8 fade-in">
+            <!-- About me -->
+            <div class="bg-gray-900 p-6 rounded-xl border-l-4 border-blue-500">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-3"><i class="fas fa-user mr-2"></i>About Me</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Saya adalah pengembang web dengan passion di front-end dan desain UI/UX. 
+                    Lebih dari 3 tahun pengalaman menciptakan website responsif dan interaktif. 
+                    Suka mengeksplorasi teknologi baru dan berbagi ilmu.
+                </p>
+            </div>
+            <!-- Total project -->
+            <div class="bg-gray-900 p-6 rounded-xl border-l-4 border-blue-500 flex flex-col items-center justify-center">
+                <i class="fas fa-rocket text-blue-400 text-5xl mb-3"></i>
+                <span class="text-5xl font-bold text-blue-400">12+</span>
+                <span class="text-gray-400 mt-2">Total Proyek Selesai</span>
+            </div>
+        </section>
+
+        <!-- VIEW PROJECT (Tombol) -->
+        <div class="text-center py-8 fade-in">
+            <a href="#projects" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition zoom-effect shadow-lg shadow-blue-600/30">
+                <i class="fas fa-eye mr-2"></i>Lihat Proyek
+            </a>
+        </div>
+
+        <!-- WEBSITE PROJECT (Card) -->
+        <section id="projects" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-10 text-blue-400 fade-in">Website Project</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500 transition zoom-effect fade-in">
+                    <img src="https://picsum.photos/400/250?random=2" alt="project 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-blue-400">E-Commerce App</h3>
+                        <p class="text-gray-400 text-sm mt-2">React, Tailwind, Node.js</p>
                     </div>
                 </div>
-
-            </div>
-        </section>
-
-        <!-- Hubungi Saya Section -->
-        <section id="contact-me" class="py-20 bg-gray-900 text-center fade-in-section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-blue-400 mb-8">Tertarik Berkolaborasi?</h2>
-                <p class="text-gray-300 text-xl max-w-2xl mx-auto mb-10">Jangan ragu untuk menghubungi saya untuk proyek baru, peluang kerja, atau sekadar berdiskusi.</p>
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Hubungi Saya Sekarang</a>
-            </div>
-        </section>
-
-        <!-- Contact With Me Section -->
-        <section id="contact" class="py-20 bg-gray-800 fade-in-section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center text-blue-400 mb-12">Terhubung Dengan Saya</h2>
-                <div class="flex flex-wrap justify-center gap-8">
-                    <a href="https://wa.me/6281234567890" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
-                        <i class="fab fa-whatsapp text-5xl text-green-500 mb-4"></i>
-                        <span class="text-xl font-semibold text-white">WhatsApp</span>
-                    </a>
-                    <a href="https://www.youtube.com/channel/yourchannel" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
-                        <i class="fab fa-youtube text-5xl text-red-600 mb-4"></i>
-                        <span class="text-xl font-semibold text-white">YouTube</span>
-                    </a>
-                    <a href="https://www.tiktok.com/@yourtiktok" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
-                        <i class="fab fa-tiktok text-5xl text-blue-400 mb-4"></i>
-                        <span class="text-xl font-semibold text-white">TikTok</span>
-                    </a>
-                    <a href="https://github.com/yourgithub" target="_blank" class="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 zoomable-card cursor-pointer">
-                        <i class="fab fa-github text-5xl text-gray-300 mb-4"></i>
-                        <span class="text-xl font-semibold text-white">GitHub</span>
-                    </a>
+                <!-- Card 2 -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500 transition zoom-effect fade-in">
+                    <img src="https://picsum.photos/400/250?random=3" alt="project 2" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-blue-400">Dashboard Admin</h3>
+                        <p class="text-gray-400 text-sm mt-2">Vue, Laravel, MySQL</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500 transition zoom-effect fade-in">
+                    <img src="https://picsum.photos/400/250?random=4" alt="project 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-blue-400">Company Profile</h3>
+                        <p class="text-gray-400 text-sm mt-2">HTML, Tailwind, GSAP</p>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- PORTOFOLIO SHOWCASE -->
+        <section class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-10 text-blue-400 fade-in">Portofolio Showcase</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Showcase 1 -->
+                <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-blue-500 transition zoom-effect fade-in">
+                    <i class="fas fa-paint-brush text-blue-400 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold">Desain Grafis</h3>
+                    <p class="text-gray-400 text-sm">Poster, logo, branding</p>
+                </div>
+                <!-- Showcase 2 -->
+                <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-blue-500 transition zoom-effect fade-in">
+                    <i class="fas fa-mobile-alt text-blue-400 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold">UI/UX Mobile</h3>
+                    <p class="text-gray-400 text-sm">Aplikasi fitness, e-commerce</p>
+                </div>
+                <!-- Showcase 3 -->
+                <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-blue-500 transition zoom-effect fade-in">
+                    <i class="fas fa-code text-blue-400 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold">Frontend Development</h3>
+                    <p class="text-gray-400 text-sm">Landing page interaktif</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HUBUNGI SAYA (Form) & CONTACT WITH ME -->
+        <section id="contact" class="py-16 grid md:grid-cols-2 gap-8 fade-in">
+            <!-- Form Hubungi Saya -->
+            <div class="bg-gray-900 p-6 rounded-xl border border-blue-500">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-4"><i class="fas fa-envelope mr-2"></i>Hubungi Saya</h3>
+                <form id="contact-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-400 mb-1">Nama</label>
+                        <input type="text" name="name" required class="w-full px-4 py-2 bg-black border border-gray-700 rounded focus:border-blue-500 outline-none text-white">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-400 mb-1">Email</label>
+                        <input type="email" name="email" required class="w-full px-4 py-2 bg-black border border-gray-700 rounded focus:border-blue-500 outline-none text-white">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-400 mb-1">Pesan</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-2 bg-black border border-gray-700 rounded focus:border-blue-500 outline-none text-white"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-semibold transition zoom-effect shadow-lg shadow-blue-600/30">
+                        <i class="fas fa-paper-plane mr-2"></i>Kirim
+                    </button>
+                </form>
+                <div id="form-response" class="mt-4 text-center text-sm"></div>
+            </div>
+
+            <!-- Contact with me (medsos) -->
+            <div class="bg-gray-900 p-6 rounded-xl border border-blue-500 flex flex-col items-center justify-center">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-6"><i class="fas fa-share-alt mr-2"></i>Contact With Me</h3>
+                <div class="flex flex-wrap gap-6 justify-center">
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-4xl transition zoom-effect"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-4xl transition zoom-effect"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-4xl transition zoom-effect"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-4xl transition zoom-effect"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="mt-6 text-gray-400 text-sm">Atau kirim email ke: zikanyaw@dev.com</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-8 border-t border-gray-800 text-center text-gray-500 text-sm fade-in">
+            <p>© 2026 ZikaNyawDev - Portofolio. All rights reserved.</p>
+            <p class="mt-2">Dibuat dengan <i class="fas fa-heart text-red-500"></i> dan Express + Tailwind</p>
+        </footer>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 py-8 text-center text-gray-400 border-t border-gray-700">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2023 ZikaNyawDev - Portofolio. All rights reserved.</p>
-            <p class="mt-2 text-sm">Dibuat dengan <i class="fas fa-heart text-red-500 mx-1"></i> oleh Dardcor AI.</p>
-        </div>
-    </footer>
+    <script>
+        // ========== ANIMASI SCROLL FADE ==========
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-visible');
+                } else {
+                    entry.target.classList.remove('fade-visible'); // hilang jika keluar (fade out)
+                }
+            });
+        }, { threshold: 0.2 });
 
-    <script src="/js/script.js"></script>
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ========== ANIMASI TEKS MENGETIK ==========
+        const typingElement = document.getElementById('typing-text');
+        const sentences = [
+            'Web Developer',
+            'UI/UX Enthusiast',
+            'Creative Coder'
+        ];
+        let sentenceIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let currentText = '';
+
+        function typeEffect() {
+            const fullText = sentences[sentenceIndex];
+            if (isDeleting) {
+                currentText = fullText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                currentText = fullText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            typingElement.textContent = currentText;
+
+            if (!isDeleting && charIndex === fullText.length) {
+                // Selesai mengetik, jeda lalu hapus
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                // Selesai menghapus, pindah ke kalimat berikutnya
+                isDeleting = false;
+                sentenceIndex = (sentenceIndex + 1) % sentences.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                // Kecepatan mengetik/menghapus
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeEffect, speed);
+            }
+        }
+
+        typeEffect();
+
+        // ========== FORM KONTAK (AJAX) ==========
+        const contactForm = document.getElementById('contact-form');
+        const formResponse = document.getElementById('form-response');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+
+            try {
+                const res = await fetch('/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (result.status === 'success') {
+                    formResponse.innerHTML = '<span class="text-green-400">✓ Pesan terkirim!</span>';
+                    contactForm.reset();
+                } else {
+                    formResponse.innerHTML = '<span class="text-red-400">✗ Gagal mengirim.</span>';
+                }
+            } catch (err) {
+                formResponse.innerHTML = '<span class="text-red-400">✗ Error jaringan.</span>';
+            }
+
+            // Hapus notifikasi setelah 3 detik
+            setTimeout(() => formResponse.innerHTML = '', 3000);
+        });
+
+        // ========== EFEK ZOOM SAAT TEKAN (opsional dengan JS, tapi kita sudah pakai :active CSS) ==========
+        // Tidak perlu JS tambahan, class zoom-effect sudah menangani via CSS :active.
+        // Namun kita pastikan semua elemen yang diinginkan punya class zoom-effect.
+        // Secara manual kita tambahkan ke semua tombol, card, ikon media sosial.
+        // Sudah ditambahkan di elemen-elemen tersebut.
+    </script>
+
+    <!-- Catatan: Efek zoom menggunakan CSS :active, jadi saat ditekan akan mengecil -->
 </body>
 </html>
