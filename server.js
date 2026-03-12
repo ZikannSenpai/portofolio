@@ -1,27 +1,19 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const axios = require("axios");
+const path = require("path");
+const rateLimit = require("express-rate-limit");
+const cors = require("cors");
+
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(express.json());
+app.use(cors());
+app.use(express.static(path.join(__dirname, "public")));
 
-// Middleware untuk menyajikan file statis dari folder public
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Contoh endpoint API untuk data proyek (jika ingin dinamis)
-app.get('/api/projects', (req, res) => {
-  const projects = [
-    { title: 'Project 1', description: 'Deskripsi proyek 1', image: 'https://via.placeholder.com/300' },
-    { title: 'Project 2', description: 'Deskripsi proyek 2', image: 'https://via.placeholder.com/300' },
-    { title: 'Project 3', description: 'Deskripsi proyek 3', image: 'https://via.placeholder.com/300' },
-  ];
-  res.json(projects);
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Contoh endpoint API untuk skills
-app.get('/api/skills', (req, res) => {
-  const skills = ['JavaScript', 'React', 'Node.js', 'Tailwind CSS', 'Express', 'MongoDB'];
-  res.json(skills);
-});
-
-app.listen(port, () => {
-  console.log(`🚀 Server berjalan di http://localhost:${port}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =>
+    console.log(`Server running on http://localhost:${PORT}`)
+);
