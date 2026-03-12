@@ -229,28 +229,28 @@ i {
     width: 85px;
     height: auto;
 }
-
 .bubble {
     position: absolute;
     left: 70px;
     bottom: 65px;
     background: white;
     padding: 6px 10px;
-    margin: auto;
     border-radius: 12px;
     font-size: 12px;
+
     width: fit-content;
     max-width: 130px;
+
     opacity: 0;
     animation: bubbleLoop 8s infinite;
 
     text-align: left;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
+
     display: flex;
-    justify-content: flex-start;
     align-items: center;
 }
-
 .bubble::after {
     content: "";
     position: absolute;
