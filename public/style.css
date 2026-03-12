@@ -92,7 +92,7 @@ video.bg {
 }
 .container {
     max-width: 800px;
-    margin: 60px auto;
+    margin: 30px auto;
     padding: 8px;
 }
 .window {
@@ -150,11 +150,12 @@ video.bg {
 .grid {
     background: #ccc8c83d;
     border-radius: 10px;
-    border: 2px solid #1e293b;
+    border: 3px solid #1e293b;
     padding: 10px 10px;
     box-shadow: 3px 3px 0 #1e293b;
 }
 .title-img {
+    aspect-ratio: 1.1;
     display: block;
     margin: auto;
     align-content: center;
