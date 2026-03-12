@@ -213,3 +213,55 @@ i {
     margin: 10px auto 20px;
     box-shadow: 3px 3px 0 #1e293b;
 }
+
+.chibi {
+    position: fixed;
+    bottom: 15px;
+    left: 10px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 999;
+}
+
+.chibi img {
+    width: 90px;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+    animation: chibiIdle 2s infinite ease-in-out;
+}
+
+.chibi #text {
+    background: white;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 140px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.chibi #text::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    bottom: 10px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid white;
+}
+
+@keyframes chibiIdle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

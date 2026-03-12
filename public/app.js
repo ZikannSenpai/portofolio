@@ -8,6 +8,20 @@ window.addEventListener("scroll", () => {
     document.getElementById("scroll-bar").style.width = percent + "%";
 });
 
+/* Random */
+const teks = [
+    "semangat harimu",
+    "jangan lupa minum kopi",
+    "ngoding lagi ya?",
+    "scroll terus bang"
+];
+
+let i = 0;
+setInterval(() => {
+    document.getElementById("text").innerText = teks[i];
+    i = (i + 1) % teks.length;
+}, 3000);
+
 /* Start Func*/
 function time() {
     const time = document.getElementById("time");
