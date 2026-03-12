@@ -148,7 +148,7 @@ video.bg {
     text-align: center;
 }
 .grid {
-    background: #fff;
+    background: #ccc8c83d;
     border-radius: 10px;
     border: 2px solid #1e293b;
     padding: 10px 10px;
@@ -179,10 +179,9 @@ video.bg {
     color: #1e293b;
     letter-spacing: 1px;
 }
-a {
+.item {
     color: #1e293b;
-    text-decoration: none;
-    padding: 5px 5px;
-    font-size: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
