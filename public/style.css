@@ -1,0 +1,143 @@
+html {
+    overflow-x: hidden;
+    width: 100%;
+    scrollbar-gutter: stable;
+}
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: "Space Grotesk", system-ui, sans-serif;
+}
+
+body.landing-page {
+    background-color: #f3f4f6;
+    background-image:
+        linear-gradient(#e5e7eb 1px, transparent 1px),
+        linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    touch-action: manipulation;
+}
+
+.landing-page ::-webkit-scrollbar {
+    width: 8px;
+}
+.landing-page ::-webkit-scrollbar-track {
+    background: #fff;
+    border-left: 2px solid #000;
+}
+.landing-page ::-webkit-scrollbar-thumb {
+    background: #000;
+}
+
+/* scanline, subtle */
+.scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 255, 0.04) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+}
+@keyframes scanline {
+    0% {
+        bottom: 100%;
+    }
+    100% {
+        bottom: -100%;
+    }
+}
+
+/* JSON pretty */
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.string {
+    color: #a5d6ff;
+}
+.number {
+    color: #ff7b72;
+}
+.boolean {
+    color: #79c0ff;
+}
+.key {
+    color: #d2a8ff;
+}
+
+/* small helpers */
+.shadow-hard {
+    box-shadow: 5px 5px 0px 0px #1e293b;
+}
+.shadow-hard-sm {
+    box-shadow: 3px 3px 0px 0px #1e293b;
+}
+
+/* responsive tweaks */
+@media (max-width: 640px) {
+    .max-w-xl {
+        margin: 0 12px;
+    }
+}
+
+.result-card {
+    display: flex;
+    gap: 15px;
+    border: 2px solid #1e293b;
+    background: #fff;
+    padding: 12px 24px;
+    margin-top: 20px;
+    box-shadow: 4px 4px 0 #1e293b;
+}
+
+.thumb {
+    width: 500px;
+    border: 2px solid #1e293b;
+    object-fit: cover;
+}
+
+.meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.video-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.author {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.download-link {
+    display: inline-block;
+    background: #8b5cf6;
+    color: #fff;
+    padding: 8px 14px;
+    border: 2px solid #1e293b;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 3px 3px 0 #1e293b;
+}
+
+.download-link:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #1e293b;
+}
