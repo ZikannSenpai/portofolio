@@ -9,19 +9,59 @@ window.addEventListener("scroll", () => {
 });
 
 /* Random */
-const teks = [
+const bubble = document.getElementById("bubble");
+
+const texts = [
     "semangat harimu",
-    "jangan lupa minum kopi",
-    "ngoding lagi ya?",
-    "scroll terus bang"
+    "ngoding lagi bang",
+    "kopi dulu biar waras",
+    "scroll santai aja"
 ];
 
 let i = 0;
+
 setInterval(() => {
-    document.getElementById("text").innerText = teks[i];
-    i = (i + 1) % teks.length;
+    bubble.innerText = texts[i];
+    bubble.classList.add("show");
+
+    setTimeout(() => {
+        bubble.classList.remove("show");
+    }, 1000);
+
+    i = (i + 1) % texts.length;
 }, 3000);
 
+window.addEventListener("scroll", () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+    const percent = (scrollTop / height) * 100;
+    document.getElementById("scroll-bar").style.width = percent + "%";
+});
+
+function topPage() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function kopi() {
+    window.open("https://trakteer.id", "_blank");
+}
+
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: location.href
+        });
+    } else {
+        navigator.clipboard.writeText(location.href);
+        alert("link dicopy");
+    }
+}
 /* Start Func*/
 function time() {
     const time = document.getElementById("time");
