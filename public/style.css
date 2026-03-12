@@ -77,7 +77,15 @@ body {
 body.loaded {
     opacity: 1;
 }
-
+#scroll-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: #fff;
+    z-index: 9999;
+}
 video.bg {
     opacity: 0.5;
     position: fixed;
