@@ -238,18 +238,20 @@ i {
     border-radius: 12px;
     font-size: 12px;
 
-    width: fit-content;
-    max-width: 130px;
+    display: inline-block;
+    width: 100px;
+    max-width: 160px;
+
+    text-align: left;
+
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+
+    line-height: 1.4;
 
     opacity: 0;
     animation: bubbleLoop 8s infinite;
-
-    text-align: left;
-    white-space: normal;
-    word-break: break-word;
-
-    display: flex;
-    align-items: center;
 }
 .bubble::after {
     content: "";
