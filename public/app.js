@@ -8,28 +8,28 @@ window.addEventListener("scroll", () => {
     document.getElementById("scroll-bar").style.width = percent + "%";
 });
 
-/* Random */
-const bubble = document.getElementById("bubble");
+/* Random */ const bubble = document.getElementById("bubble");
 
 const texts = [
-    "semangat harimu",
-    "ngoding lagi bang",
-    "kopi dulu biar waras",
-    "scroll santai aja"
+    "Project error? Lapor CS ya!",
+    "Jangan lupa Donasi ya!",
+    "Zikann Terbaik!",
+    "Dukung kami terus ya!",
+    "Request project di saluran ya!"
 ];
 
 let i = 0;
 
-setInterval(() => {
+function changeText() {
     bubble.innerText = texts[i];
-    bubble.classList.add("show");
-
-    setTimeout(() => {
-        bubble.classList.remove("show");
-    }, 1000);
-
     i = (i + 1) % texts.length;
-}, 3000);
+}
+
+changeText();
+
+setInterval(() => {
+    changeText();
+}, 8000);
 
 window.addEventListener("scroll", () => {
     const scrollTop = document.documentElement.scrollTop;
