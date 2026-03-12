@@ -184,7 +184,7 @@ video.bg {
     text-align: center;
 }
 .about {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     color: #1e293b;
     letter-spacing: 1px;
@@ -202,6 +202,7 @@ i {
 }
 
 .time {
+    font-weight: bold;
     width: fit-content;
     text-align: center;
     padding: 10px 10px;
