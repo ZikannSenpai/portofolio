@@ -99,9 +99,15 @@
                 padding: 8px;
             }
             .window {
-                background: #f1f5f9;
-                border: 3px solid #1e293b;
+                border-radius: 5%;
                 box-shadow: 6px 6px 0 #1e293b;
+                padding: 3px;
+                background: #1e293b;
+            }
+            .window-inner {
+                background: #f1f5f9;
+                border-radius: calc(5% - 3px);
+                overflow: hidden;
             }
 
             .window-top {
@@ -180,24 +186,33 @@
     <body class="landing-page font-display">
         <div class="container">
             <div class="window">
-                <div class="window-top">
-                    <div class="dot red"></div>
-                    <div class="dot yellow"></div>
-                    <div class="dot green"></div>
-                </div>
-                <div class="title font-bold font-normal">
-                    <strong> ZikaNyawDev </strong>
-                </div>
-                <div class="desc font-normal">
-                    Full-Stuck Developer & Wibu Garis Keras
-                </div>
-                <div class="content">
-                    <div class="grid">
-                        <img class="title-img" src="assets/logo2.jpg" />
-                        <div class="about font-display font-normal">
-                            <strong> About Me </strong>
+                <div class="window-inner">
+                    <div class="window-top">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+
+                    <div class="title font-bold font-normal">
+                        <strong>ZikaNyawDev</strong>
+                    </div>
+
+                    <div class="desc font-normal">
+                        Full-Stuck Developer & Wibu Garis Keras
+                    </div>
+
+                    <div class="content">
+                        <div class="grid">
+                            <img class="title-img" src="assets/logo2.jpg" />
+
+                            <div class="about font-display font-normal">
+                                <strong>About Me</strong>
+                            </div>
+
+                            <div class="desc">
+                                Nyubi Developeler Full Ngestuck
+                            </div>
                         </div>
-                        <div class="desc">Nyubi Developeler Full Ngestuck</div>
                     </div>
                 </div>
             </div>
