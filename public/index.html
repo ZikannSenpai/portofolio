@@ -145,6 +145,58 @@
                             ><strong> --:--:-- </strong>
                         </span>
                     </div>
+                    <div class="yt-card">
+                        <div class="yt-head">
+                            <span
+                                ><i class="fab fa-youtube"></i> Now Playing
+                                on</span
+                            >
+                            <button id="shuffle" class="shuffle">
+                                <i class="fas fa-random"></i> Mode Acak
+                            </button>
+                        </div>
+
+                        <div class="yt-info">
+                            <img id="cover" class="cover" />
+
+                            <div class="meta">
+                                <div id="title" class="title">Loading...</div>
+                                <div class="source">YouTube</div>
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <span id="current">0:00</span>
+                            <input type="range" id="progress" value="0" />
+                            <span id="duration">0:00</span>
+                        </div>
+
+                        <div class="controls">
+                            <button id="prev">
+                                <i class="fas fa-backward"></i>
+                            </button>
+                            <button id="play" class="play">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button id="next">
+                                <i class="fas fa-forward"></i>
+                            </button>
+                        </div>
+
+                        <div class="volume">
+                            <i class="fas fa-volume-up"></i>
+                            <input
+                                type="range"
+                                id="volume"
+                                min="0"
+                                max="100"
+                                value="100"
+                            />
+                        </div>
+                    </div>
+
+                    <div id="ytplayer"></div>
+                    <script src="https://www.youtube.com/iframe_api"></script>
                 </div>
             </div>
         </div>
