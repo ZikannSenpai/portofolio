@@ -162,6 +162,7 @@ video.bg {
     width: 40%;
     border: 2px solid #1e293b;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 .title {
     margin-top: 10px;
@@ -189,4 +190,16 @@ video.bg {
 
 i {
     color: black;
+}
+
+.time {
+    width: fit-content;
+    text-align: center;
+    padding: 10px 10px;
+    font-size: 1.5rem;
+    background: #fff;
+    border-radius: 5px;
+    border: 2px solid #1e293b;
+    margin: 10px auto 20px;
+    box-shadow: 3px 3px 0 #1e293b;
 }
