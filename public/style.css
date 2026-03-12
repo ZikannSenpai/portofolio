@@ -180,8 +180,13 @@ video.bg {
     letter-spacing: 1px;
 }
 .item {
-    color: #1e293b;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
+    justify-content: center;
+    font-size: 22px;
+}
+
+i {
+    color: black;
 }
