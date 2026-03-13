@@ -103,7 +103,7 @@ video.bg {
 }
 .window-inner {
     background: #f1f5f9;
-    border-radius: calc(5% - 3px);
+    border-radius: 1rem;
     overflow: hidden;
 }
 

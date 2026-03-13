@@ -1,4 +1,5 @@
 const bubble = document.getElementById("bubble");
+let i = 0;
 
 const texts = [
     "Project error? Lapor CS ya!",
