@@ -346,12 +346,34 @@ i {
     color: white;
 }
 
+.project-title {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    text-align: center;
+}
+
 .window-project {
     margin-top: 50px;
 }
 
 .project-btn {
+    display: block;
+    background: #ccc8c83d;
+    border: 2px solid #1e293b;
+    box-shadow: 3px 3px 0 #1e293b;
     color: #1e293b;
-    font-size: 1rem;
+    border-radius: 10px;
+    padding: 10px 70px;
+    font-size: 1.1rem;
     font-weight: bold;
+    transition: transform 0.15s ease;
+}
+
+.project-btn:hover {
+    transform: scale(1.01);
+}
+
+.project-btn:active {
+    transform: scale(0.97) translate(2px, 2px);
+    box-shadow: 1px 1px 0 #1e293b;
 }
