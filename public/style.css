@@ -145,7 +145,7 @@ video.bg {
     transform: translateY(0);
 }
 .content {
-    padding: 20px 20px;
+    padding: 10px 20px;
     text-align: center;
 }
 .grid {
@@ -347,7 +347,7 @@ i {
 }
 
 .project-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-top: 20px;
     text-align: center;
 }
@@ -362,8 +362,9 @@ i {
     border: 2px solid #1e293b;
     box-shadow: 3px 3px 0 #1e293b;
     color: #1e293b;
+    margin: 20px auto;
     border-radius: 10px;
-    padding: 10px 70px;
+    padding: 10px 10px;
     font-size: 1.1rem;
     font-weight: bold;
     transition: transform 0.15s ease;
