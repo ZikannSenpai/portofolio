@@ -224,7 +224,7 @@ i {
 .chibi {
     position: fixed;
     left: 14px;
-    bottom: 12px;
+    bottom: 5px;
     display: flex;
     align-items: flex-end;
     z-index: 9999;
@@ -232,6 +232,7 @@ i {
 }
 
 .chibi img {
+    transform: scaleX(-1);
     width: 85px;
     height: auto;
 }
@@ -342,4 +343,13 @@ i {
 .up {
     background: #8b5cf6;
     color: white;
+}
+
+.window-project {
+    margin-top: 50px;
+}
+
+.project-btn {
+    font-size: 1rem;
+    font-weight: bold;
 }

@@ -5,7 +5,9 @@ const texts = [
     "Project error? Lapor CS ya!",
     "Jangan lupa Donasi ya!",
     "Zikann Terbaik!",
+    "Jangan lupa Follow Tiktok mimin ya!",
     "Dukung kami terus ya!",
+    "Jangan lupa Join Saluran ya!",
     "Request project di saluran ya!"
 ];
 
