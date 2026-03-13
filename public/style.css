@@ -193,6 +193,11 @@ i {
     color: black;
 }
 
+.stack-icon {
+    padding: 10px 10px;
+    font-size: 50px;
+}
+
 .time {
     font-weight: bold;
     width: fit-content;
@@ -215,6 +220,7 @@ i {
     background: #5fdfffaf;
     z-index: 9999;
 }
+
 .chibi {
     position: fixed;
     left: 14px;

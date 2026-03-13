@@ -1,0 +1,58 @@
+.fa-html5 {
+    text-shadow: 1px 1px 0 black;
+    color: #e34f26;
+}
+.fa-css3-alt {
+    text-shadow: 1px 1px 0 black;
+    color: #1572b6;
+}
+
+.fa-js {
+    text-shadow: 1px 1px 0 black;
+    color: #f7df1e;
+}
+
+.fa-python {
+    text-shadow: 1px 1px 0 black;
+    color: #3776ab;
+}
+
+.fa-node-js {
+    text-shadow: 1px 1px 0 black;
+    color: #339933;
+}
+
+.fa-database {
+    text-shadow: 1px 1px 0 black;
+    color: #47a248;
+}
+
+.fa-github {
+    text-shadow: 1px 1px 0 black;
+    color: #181717;
+}
+
+.fa-react {
+    text-shadow: 1px 1px 0 black;
+    color: #61dafb;
+}
+
+.fa-vuejs {
+    text-shadow: 1px 1px 0 black;
+    color: #42b883;
+}
+
+.fa-angular {
+    text-shadow: 1px 1px 0 black;
+    color: #dd0031;
+}
+
+.fa-laravel {
+    text-shadow: 1px 1px 0 black;
+    color: #ff2d20;
+}
+
+.fa-bootstrap {
+    text-shadow: 1px 1px 0 black;
+    color: #7952b3;
+}
