@@ -221,15 +221,21 @@
                 document.body.classList.add("loaded");
             });
 
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add("show");
-                    }
-                });
-            });
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add("show");
+                        } else {
+                            e.target.classList.remove("show");
+                        }
+                    });
+                },
+                { threshold: 0.15 }
+            );
+
             document
-                .querySelectorAll(".grid, .window, .project-btn .fade")
+                .querySelectorAll(".grid, .window, .project-btn")
                 .forEach(el => {
                     el.classList.add("fade");
                     observer.observe(el);
