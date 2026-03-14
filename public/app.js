@@ -13,13 +13,14 @@ const text = [
     "AI Engineer."
 ];
 const texts = [
+    "Irasaimase Onii-chan!",
+    "Dukung kami terus ya, Arigatou!",
     "Project error? Lapor CS ya!",
     "Jangan lupa Donasi ya!",
     "Zikann Terbaik!",
     "Jangan lupa Follow Tiktok mimin ya!",
-    "Dukung kami terus ya, Arigatou!",
-    "Jangan lupa Join Saluran ya!",
-    "Request project di saluran ya!"
+    "Request project di saluran ya!",
+    "Jangan lupa Join Saluran ya!"
 ];
 
 /* Window */
