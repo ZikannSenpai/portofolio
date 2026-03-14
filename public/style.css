@@ -395,10 +395,10 @@ i {
 }
 
 #type {
-    display: inline;
+    display: inline-block;
 }
 .cursor {
-    display: inline;
+    display: inline-block;
     animation: blink 1s infinite;
 }
 
