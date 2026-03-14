@@ -1,6 +1,11 @@
 const bubble = document.getElementById("bubble");
 let i = 0;
+let c = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
 
+const text = ["Halo gw Zikann", "Web Developer", "Lua Scripter"];
 const texts = [
     "Project error? Lapor CS ya!",
     "Jangan lupa Donasi ya!",
@@ -80,6 +85,28 @@ function time() {
     }
 }
 
-/* Start Func*/
+function type() {
+    current = text[c];
 
+    if (!isDeleting) {
+        document.getElementById("type").textContent = current.slice(0, j++);
+        if (j > current.length) {
+            isDeleting = true;
+            setTimeout(type, 5000);
+            return;
+        }
+    } else {
+        document.getElementById("type").textContent = current.slice(0, j--);
+        if (j < 0) {
+            isDeleting = false;
+            c++;
+            if (c >= text.length) c = 0;
+        }
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+
+/* Start Func*/
+type();
 time();
