@@ -92,7 +92,7 @@
         </video>
         <div id="scroll-bar"></div>
         <div class="container">
-            <div class="window fade">
+            <div class="window">
                 <div class="window-inner">
                     <div class="window-top">
                         <div class="dot red"></div>
@@ -241,7 +241,7 @@
             );
 
             document
-                .querySelectorAll(".grid, .window, .project-btn, .time")
+                .querySelectorAll(".grid, .project-btn, .time")
                 .forEach(el => {
                     el.classList.add("fade");
                     observer.observe(el);
