@@ -229,10 +229,12 @@
                     }
                 });
             });
-
-            document.querySelectorAll(".fade").forEach(el => {
-                observer.observe(el);
-            });
+            document
+                .querySelectorAll(".grid, .window, .project-btn .fade")
+                .forEach(el => {
+                    el.classList.add("fade");
+                    observer.observe(el);
+                });
         </script>
         <script src="app.js"></script>
     </body>
