@@ -229,7 +229,7 @@ i {
 .chibi {
     position: fixed;
     left: 14px;
-    bottom: 5px;
+    bottom: 3px;
     display: flex;
     align-items: flex-end;
     z-index: 9999;
