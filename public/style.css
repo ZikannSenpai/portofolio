@@ -181,22 +181,6 @@ video.bg {
     text-align: center;
 }
 
-.desc-type {
-    text-align: center;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%,
-    50%,
-    100% {
-        opacity: 1;
-    }
-    25%,
-    75% {
-        opacity: 0;
-    }
-}
 .about {
     font-size: 22px;
     font-weight: bold;
@@ -246,7 +230,7 @@ i {
 .chibi {
     position: fixed;
     left: 14px;
-    bottom: 3px;
+    bottom: 1px;
     display: flex;
     align-items: flex-end;
     z-index: 9999;
@@ -408,4 +392,24 @@ i {
 }
 .grid .fade:nth-child(3) {
     transition-delay: 0.3s;
+}
+
+#type {
+    display: inline;
+}
+.cursor {
+    display: inline;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+    25%,
+    75% {
+        opacity: 0;
+    }
 }

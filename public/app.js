@@ -5,13 +5,19 @@ let j = 0;
 let current = "";
 let isDeleting = false;
 
-const text = ["Halo gw Zikann", "Web Developer", "Lua Scripter"];
+const text = [
+    "Hello Im Zikann.",
+    "Web Developeler Full Ngestuck di JS.",
+    "Code Is Life.",
+    "Custom Plugin Development.",
+    "AI Engineer."
+];
 const texts = [
     "Project error? Lapor CS ya!",
     "Jangan lupa Donasi ya!",
     "Zikann Terbaik!",
     "Jangan lupa Follow Tiktok mimin ya!",
-    "Dukung kami terus ya!",
+    "Dukung kami terus ya, Arigatou!",
     "Jangan lupa Join Saluran ya!",
     "Request project di saluran ya!"
 ];
@@ -101,10 +107,11 @@ function type() {
             isDeleting = false;
             c++;
             if (c >= text.length) c = 0;
+            j = 0;
         }
     }
 
-    setTimeout(type, isDeleting ? 50 : 100);
+    setTimeout(type, isDeleting ? 100 : 100);
 }
 
 /* Start Func*/
