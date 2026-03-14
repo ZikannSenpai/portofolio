@@ -402,6 +402,11 @@ i {
     animation: blink 1s infinite;
 }
 
+#type,
+.cursor {
+    display: inline;
+}
+
 @keyframes blink {
     0%,
     50%,
