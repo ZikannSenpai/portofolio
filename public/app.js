@@ -115,6 +115,13 @@ function type() {
     setTimeout(type, isDeleting ? 100 : 100);
 }
 
+function coming() {
+    Swal.fire({
+        icon: "info",
+        title: "Coming Soon!",
+        text: "this project will be released soon."
+    });
+}
 /* Start Func*/
 type();
 time();
