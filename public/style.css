@@ -394,6 +394,7 @@ i {
     transition-delay: 0.3s;
 }
 
+/*
 #type {
     display: inline-block;
 }
@@ -401,6 +402,7 @@ i {
     display: inline-block;
     animation: blink 1s infinite;
 }
+*/
 
 #type,
 .cursor {
