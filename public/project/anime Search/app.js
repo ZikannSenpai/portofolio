@@ -76,8 +76,32 @@ btn.onclick = async () => {
         );
 
         const json = await res.json();
-        console.log(json);
-        result.innerHTML = json;
+        const data = json.data.animeList;
+        if (!data || !data.length) {
+            result.innerHTML = "Anime tidak ditemukan!";
+            return;
+        }
+
+        let html = "";
+
+        data.forEach(item => {
+            html += `
+    <div class="result-card">
+        <img class="thumb" src="${item.poster}">
+        <div class="meta">
+            <div class="video-title">${item.title || "No Title"}</div>
+            <div class="author">@${item.author || "ZikaNyawDev"}</div>
+            <div class="info">
+                <span>Status: ${item.status || "Unknown"}</span>
+                <span>Score: ${item.score || "N/A"}</span>
+            </div>
+            <div class="genre-list">
+                ${item.genreList ? item.genreList.map(g => `<span>${g.title}</span>`).join("") : ""}
+            </div>
+        </div>
+    </div>`;
+        });
+        result.innerHTML = html;
     } catch (err) {
         result.innerHTML = `Error: ${err}`;
         console.error("Error:", err);

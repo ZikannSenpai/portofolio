@@ -1,12 +1,15 @@
-const os = require("os");
+async function init() {
+    const input = "toni";
+    try {
+        const res = await fetch(
+            `https://zikaneko.vercel.app/api/anime/search?query=${encodeURIComponent(input)}`
+        );
 
-Object.keys(os).forEach(k => {
-    if (typeof os[k] === "function") {
-        try {
-            const res = os[k]();
-            console.log("OS CALL:", k, "RES:", res);
-        } catch (e) {
-            console.log("OS CALL:", k, "ERROR:", e.message);
-        }
+        const json = await res.json();
+        const data = json.data.animeList[0].genreList;
+        console.log("data:", data);
+    } catch (err) {
+        console.error("Error:", err);
     }
-});
+}
+init();
