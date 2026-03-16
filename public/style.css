@@ -137,10 +137,10 @@ video.bg {
 
 .fade {
     opacity: 0;
-    transform: translateY(60px);
+    transform: translateY(-30px);
     transition:
-        opacity 1.4s ease,
-        transform 1.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        opacity 1.3s ease,
+        transform 1.3s cubic-bezier(0.22, 0.61, 0.36, 1);
     transition-delay: 0.1s;
 }
 
