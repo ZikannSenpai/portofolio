@@ -62,7 +62,6 @@ const inp = document.getElementById("search");
 
 btn.onclick = async () => {
     const input = inp.value.trim();
-
     if (!input) {
         result.innerHTML = "Input Tidak Boleh Kosong!";
         return;
@@ -71,36 +70,45 @@ btn.onclick = async () => {
     result.innerHTML = "Loading...";
 
     try {
-        const res = await fetch(
+        const res1 = await fetch(
             `https://zikaneko.vercel.app/api/anime/search?query=${encodeURIComponent(input)}`
         );
+        const res2 = await fetch(
+            `https://www.sankavollerei.com/anime/animasu/search/${encodeURIComponent(input)}`
+        );
 
-        const json = await res.json();
-        const data = json.data.animeList;
-        if (!data || !data.length) {
+        const json1 = await res1.json();
+        const json2 = await res2.json();
+
+        // gabungin jadi satu array
+        const data1 = json1.data?.animeList || [];
+        const data2 = json2?.animes || [];
+        const combined = [...data2, ...data1];
+
+        if (!combined.length) {
             result.innerHTML = "Anime tidak ditemukan!";
             return;
         }
 
         let html = "";
-
-        data.forEach(item => {
+        combined.forEach(item => {
             html += `
-    <div class="result-card">
-        <img class="thumb" src="${item.poster}">
-        <div class="meta">
-            <div class="video-title">${item.title || "No Title"}</div>
-            <div class="author">@${item.author || "ZikaNyawDev"}</div>
-            <div class="info">
-                <span>Status: ${item.status || "Unknown"}</span>
-                <span>Score: ${item.score || "N/A"}</span>
-            </div>
-            <div class="genre-list">
-                ${item.genreList ? item.genreList.map(g => `<span>${g.title}</span>`).join("") : ""}
-            </div>
-        </div>
-    </div>`;
+            <div class="result-card">
+                <img class="thumb" src="${item.poster}">
+                <div class="meta">
+                    <div class="video-title">${item.title || "No Title"}</div>
+                    <div class="author">@${item.author || "ZikaNyawDev"}</div>
+                    <div class="info">
+                        <span>Status: ${item.status || item.status_or_day || "Unknown"}</span>
+                        <span>Score: ${item.score || "N/A"}</span>
+                    </div>
+                    <div class="genre-list">
+                        ${item.genreList ? item.genreList.map(g => `<span>${g.title}</span>`).join("") : ""}
+                    </div>
+                </div>
+            </div>`;
         });
+
         result.innerHTML = html;
     } catch (err) {
         result.innerHTML = `Error: ${err}`;

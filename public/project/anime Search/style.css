@@ -4,11 +4,17 @@ html {
 }
 
 body {
+    opacity: 0;
+    transition: opacity 0.9s ease;
     overflow-x: hidden;
     font-family: "Space Grotesk", system-ui, sans-serif;
     color: #fff;
     background: #0f172a;
     margin-top: 60px;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 #sidebar {
