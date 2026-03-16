@@ -11,7 +11,7 @@ const texts = [
     getGreeting(),
     "WELCOME TO MY DASHBOARD.",
     "CEPAT, MUDAH & MURAH.",
-    "MADE BY ZIKASHMIST."
+    "MADE BY ZIKANYAWDEV."
 ];
 let i = 0;
 let j = 0;
