@@ -53,3 +53,33 @@ overlay.onclick = () => {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
 };
+
+/*logic*/
+
+const result = document.getElementById("results");
+const btn = document.getElementById("search-btn");
+const inp = document.getElementById("search");
+
+btn.onclick = async () => {
+    const input = inp.value.trim();
+
+    if (!input) {
+        result.innerHTML = "Input Tidak Boleh Kosong!";
+        return;
+    }
+
+    result.innerHTML = "Loading...";
+
+    try {
+        const res = await fetch(
+            `https://zikaneko.vercel.app/api/anime/search?query=${encodeURIComponent(input)}`
+        );
+
+        const json = await res.json();
+        console.log(json);
+        result.innerHTML = json;
+    } catch (err) {
+        result.innerHTML = `Error: ${err}`;
+        console.error("Error:", err);
+    }
+};
