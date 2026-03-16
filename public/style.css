@@ -363,6 +363,7 @@ i {
 }
 
 .project-btn {
+    opacity: 0;
     display: block;
     background: #ccc8c83d;
     border: 2px solid #1e293b;
@@ -373,10 +374,11 @@ i {
     padding: 10px 10px;
     font-size: 1.1rem;
     font-weight: bold;
-    transition: transform 0.15s ease;
+    transition: transform 0.5s ease;
 }
 
 .project-btn:hover {
+    opacity: 1;
     transform: scale(1.01);
 }
 
