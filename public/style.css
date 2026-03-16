@@ -421,3 +421,34 @@ i {
         opacity: 0;
     }
 }
+
+.status-title {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.status-online {
+    color: #22c55e;
+    font-weight: bold;
+} /* ijo */
+.status-offline {
+    color: #ef4444;
+    font-weight: bold;
+} /* merah */
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.status-box {
+    background: #ccc8c83d;
+    border: 3px solid #1e293b;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 3px 3px 0 #1e293b;
+    font-weight: bold;
+}

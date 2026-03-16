@@ -5,6 +5,17 @@ let j = 0;
 let current = "";
 let isDeleting = false;
 
+/*
+document.getElementById("serverStatus").innerText = apiData.serverStatus;
+document.getElementById("totalRequest").innerText = apiData.totalRequest;
+document.getElementById("visitors").innerText = apiData.visitors;
+document.getElementById("peakUsers").innerText = apiData.peakUsers;
+document.getElementById("runtime").innerText = apiData.runtime;
+document.getElementById("nodeVersion").innerText = apiData.nodeVersion;
+document.getElementById("diskUsage").innerText = apiData.diskUsage;
+document.getElementById("cpuModel").innerText = apiData.cpuModel;
+*/
+
 const text = [
     "Hello Im Zikann.",
     "Web Developeler Full Ngestuck di JS.",
