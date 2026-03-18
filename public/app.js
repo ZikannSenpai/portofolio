@@ -5,17 +5,55 @@ let j = 0;
 let current = "";
 let isDeleting = false;
 
-/*
-document.getElementById("serverStatus").innerText = apiData.serverStatus;
-document.getElementById("totalRequest").innerText = apiData.totalRequest;
-document.getElementById("visitors").innerText = apiData.visitors;
-document.getElementById("peakUsers").innerText = apiData.peakUsers;
-document.getElementById("runtime").innerText = apiData.runtime;
-document.getElementById("nodeVersion").innerText = apiData.nodeVersion;
-document.getElementById("diskUsage").innerText = apiData.diskUsage;
-document.getElementById("cpuModel").innerText = apiData.cpuModel;
-*/
+async function apiStatus() {
+    const serverStatus = document.getElementById("serverStatus");
+    const totalRequest = document.getElementById("totalRequest");
+    const visitors = document.getElementById("visitors");
+    const peakUsers = document.getElementById("peakUsers");
+    const runtime = document.getElementById("runtime");
+    const nodeVersion = document.getElementById("nodeVersion");
+    const diskUsage = document.getElementById("diskUsage");
+    const cpuModel = document.getElementById("cpuModel");
 
+    try {
+        const res = await fetch("https://zikaneko.vercel.app/server/data");
+        const json = await res.json();
+        if (!json) {
+            console.log("server error");
+        }
+
+        const apiData = json.server;
+        console.log(apiData);
+
+        function diskUsageFormat(value) {
+            const disk = value;
+            const diskusage = disk.used;
+            const diskfree = disk.free;
+
+            return `${diskusage} / ${diskfree}`;
+        }
+        if (apiData.status) {
+            serverStatus.innerText = "Aktif";
+            serverStatus.classList.add("status-online");
+            serverStatus.classList.remove("status-offline");
+
+            visitors.innerText = apiData.visitor;
+            runtime.innerText = apiData.uptime;
+            nodeVersion.innerText = apiData.node;
+            diskUsage.innerText = "\n" + diskUsageFormat(apiData.disk);
+            cpuModel.innerText = "\n" + apiData.cpu.cpus[0].model;
+
+            totalRequest.innerText = apiData.totalReq;
+            peakUsers.innerText = apiData.peakUser;
+        } else {
+            serverStatus.innerText = "Nonaktif";
+            serverStatus.classList.add("status-offline");
+            serverStatus.classList.remove("status-online");
+        }
+    } catch (err) {
+        console.error("Error:", err);
+    }
+}
 const text = [
     "Hello Im Zikann.",
     "Web Developeler Full Ngestuck di JS.",
@@ -136,3 +174,8 @@ function coming() {
 /* Start Func*/
 type();
 time();
+apiStatus();
+
+setInterval(() => {
+    apiStatus();
+}, 1000);
