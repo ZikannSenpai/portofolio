@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ZikaNyawDev - Donasi</title>
+        <meta property="og:title" content="ZikaNyawDev - Donate" />
+        <meta
+            property="og:description"
+            content="Dukung ZikaNyawDev Dengan Donasi."
+        />
+        <meta
+            property="og:image"
+            content="https://zikaneko.vercel.app/src/zikk.png"
+        />
+        <meta property="og:url" content="https://zikanyawdev.vercel.app" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            mono: ['"JetBrains Mono"', "monospace"],
+                            display: ['"Space Grotesk"', "sans-serif"]
+                        },
+                        boxShadow: {
+                            hard: "5px 5px 0px 0px #1e293b",
+                            "hard-hover": "2px 2px 0px 0px #1e293b",
+                            "hard-sm": "3px 3px 0px 0px #1e293b"
+                        },
+                        colors: {
+                            primary: "#6366f1",
+                            secondary: "#a855f7",
+                            dark: "#1e293b"
+                        },
+                        backgroundImage: {
+                            "grid-pattern":
+                                "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)"
+                        },
+                        animation: {
+                            blob: "blob 7s infinite",
+                            "fade-up": "fadeUp 0.5s ease-out forwards"
+                        },
+                        keyframes: {
+                            blob: {
+                                "0%": {
+                                    transform: "translate(0px, 0px) scale(1)"
+                                },
+                                "33%": {
+                                    transform:
+                                        "translate(30px, -50px) scale(1.1)"
+                                },
+                                "66%": {
+                                    transform:
+                                        "translate(-20px, 20px) scale(0.9)"
+                                },
+                                "100%": {
+                                    transform: "translate(0px, 0px) scale(1)"
+                                }
+                            },
+                            fadeUp: {
+                                "0%": {
+                                    opacity: "0",
+                                    transform: "translateY(10px)"
+                                },
+                                "100%": {
+                                    opacity: "1",
+                                    transform: "translateY(0)"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        </script>
+    </head>
+
+    <body class="landing-page font-display">
+        <header class="header">
+            <a class="head-btn font-bold font-display" href="/">
+                Kembali ke Beranda
+            </a>
+        </header>
+        <div class="container">
+            <div class="window">
+                <div class="window-top">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+
+                <div class="content">
+                    <img
+                        class="img-content"
+                        id="img-content"
+                        src="../../assets/logo.png"
+                    />
+                    <div class="input-box">
+                        <input
+                            id="number"
+                            type="number"
+                            placeholder="Masukan Nominal"
+                        />
+                    </div>
+                    <div class="button-box">
+                        <button class="download-btn" id="submit">
+                            Buat QR
+                        </button>
+                    </div>
+
+                    <div class="category" id="category">
+                        <button class="cat-btn active" data="10.000">
+                            10.000
+                        </button>
+                        <button class="cat-btn" data="20.000">20.000</button>
+                        <button class="cat-btn" data="50.000">50.000</button>
+                    </div>
+
+                    <div class="sumary">
+                        <div class="info">
+                            <span>Nominal terpilih</span>
+                            <strong id="terpilih">Rp 0</strong>
+                        </div>
+                        <div class="info">
+                            <span>Status QR</span>
+                            <strong id="statusQR">Belum dibuat</strong>
+                        </div>
+                    </div>
+                    <div class="qr-box">
+                        <canvas id="qrisCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">ZikaNyawDev Comunity</div>
+
+                <div class="footer-social">
+                    <a href="#" target="_blank"
+                        ><i class="fa-brands fa-github"></i
+                    ></a>
+                    <a href="https://tiktok.com/@zikannsenpai" target="_blank"
+                        ><i class="fa-brands fa-tiktok"></i
+                    ></a>
+                    <a href="https://wa.me/6285775359514" target="_blank"
+                        ><i class="fa-brands fa-whatsapp"></i
+                    ></a>
+                </div>
+
+                <div class="footer-creator">Created by ZikaNyawDev</div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+        <script>
+            window.addEventListener("load", () => {
+                document.body.classList.add("loaded");
+            });
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>
