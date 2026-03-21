@@ -54,6 +54,7 @@ buttons.forEach(btn => {
         selectedNominal = parseInt(val);
 
         input.value = selectedNominal;
+        statusQR.textContent = "Siap Dibuat";
         terpilih.textContent = "Rp " + selectedNominal.toLocaleString("id-ID");
     });
 });
@@ -68,7 +69,6 @@ submit.addEventListener("click", () => {
         statusQR.textContent = "nominal tidak boleh kosong";
         return;
     }
-    statusQR.textContent = "Siap Dibuat";
     const qris = generateQrisDynamic(parseInt(nominal));
 
     if (!qris) {
