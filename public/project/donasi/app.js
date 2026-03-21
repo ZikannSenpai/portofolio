@@ -45,6 +45,21 @@ const buttons = document.querySelectorAll(".cat-btn");
 let selectedNominal = 0;
 
 // klik nominal cepat
+input.addEventListener("input", () => {
+    const val = btn.getAttribute("data").replace(/\./g, "");
+    selectedNominal = parseInt(val);
+
+    input.value = selectedNominal;
+    input.dispatchEvent(new Event("input"));
+
+    terpilih.textContent = "Rp " + val.toLocaleString("id-ID");
+
+    statusQR.textContent = val > 0 ? "Siap Dibuat" : "Belum dibuat";
+    statusQR.classList.toggle("cyellow", val > 0);
+    statusQR.classList.toggle("cred", val <= 0);
+    statusQR.classList.remove("cgreen");
+});
+
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
         buttons.forEach(b => b.classList.remove("active"));
