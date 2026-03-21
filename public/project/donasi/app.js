@@ -59,27 +59,6 @@ buttons.forEach(btn => {
 });
 
 // klik buat qr
-submit.addEventListener("click", () => {
-    const nominal = input.value || selectedNominal;
-
-    if (!nominal || nominal <= 0) {
-        statusQR.textContent = "nominal lu kosong goblok";
-        return;
-    }
-
-    const qris = generateQrisDynamic(parseInt(nominal));
-
-    if (!qris) {
-        statusQR.textContent = "gagal bikin QR 🥀";
-        return;
-    }
-
-    // tampil status doang dulu
-    statusQR.textContent = "QR siap 😎";
-
-    console.log("QRIS:", qris); // nanti lu render jadi QR image sendiri
-});
-
 const canvas = document.getElementById("qrisCanvas");
 
 submit.addEventListener("click", () => {
