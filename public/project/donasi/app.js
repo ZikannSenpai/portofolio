@@ -46,11 +46,9 @@ let selectedNominal = 0;
 
 // klik nominal cepat
 input.addEventListener("input", () => {
-    const val = btn.getAttribute("data").replace(/\./g, "");
-    selectedNominal = parseInt(val);
+    const val = parseInt(input.value) || 0;
 
-    input.value = selectedNominal;
-    input.dispatchEvent(new Event("input"));
+    selectedNominal = val;
 
     terpilih.textContent = "Rp " + val.toLocaleString("id-ID");
 
@@ -69,11 +67,7 @@ buttons.forEach(btn => {
         selectedNominal = parseInt(val);
 
         input.value = selectedNominal;
-        statusQR.textContent = "Siap Dibuat";
-        statusQR.classList.add("cyellow");
-        statusQR.classList.remove("cred");
-        statusQR.classList.remove("cgreen");
-        terpilih.textContent = "Rp " + selectedNominal.toLocaleString("id-ID");
+        input.dispatchEvent(new Event("input"));
     });
 });
 
