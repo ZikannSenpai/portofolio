@@ -12,6 +12,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/project", express.static(path.join(__dirname, "public/project")));
 
+app.get("/donate", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/project/donasi/donasi.html"));
+});
 app.get("/downloadanime", (req, res) => {
     res.sendFile(path.join(__dirname, "public/project/batch/main.html"));
 });
