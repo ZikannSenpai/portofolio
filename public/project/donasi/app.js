@@ -1,5 +1,5 @@
 const STATIC_QRIS =
-    "00020101021126610014COM.GO-JEK.WWW01189360091433235676600210G3235676600303UMI51440014ID.CO.QRIS.WWW0215ID10264726415900303UMI5204899953033605802ID5925DANDI EKA SAPUTRA, Digita6006BANTUL61055576362070703A01630460EC";
+    "00020101021126610014COM.GO-JEK.WWW01189360091431506835490210G1506835490303UMI51440014ID.CO.QRIS.WWW0215ID10254320909220303UMI5204866153033605802ID5912Zikann Store6013JAKARTA PUSAT61051011062070703A0163049C54";
 
 function crc16(s) {
     let crc = 0xffff;
@@ -65,10 +65,10 @@ submit.addEventListener("click", () => {
     const nominal = input.value || selectedNominal;
 
     if (!nominal || nominal <= 0) {
-        statusQR.textContent = "nominal lu kosong goblok";
+        statusQR.textContent = "nominal tidak boleh kosong";
         return;
     }
-
+    statusQR.textContent = "Siap Dibuat";
     const qris = generateQrisDynamic(parseInt(nominal));
 
     if (!qris) {
@@ -76,7 +76,7 @@ submit.addEventListener("click", () => {
         return;
     }
 
-    statusQR.textContent = "QR siap 😎";
+    statusQR.textContent = "Sudah Dibuat";
 
     // render jadi gambar
     QRCode.toCanvas(
