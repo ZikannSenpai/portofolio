@@ -275,7 +275,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 220px;
+    min-height: 240px;
 }
 
 .qr-box canvas {
