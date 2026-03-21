@@ -270,6 +270,16 @@ a:hover {
     color: #280029;
     font-size: 18px;
 }
+
+.info strong.cred {
+    color: red;
+}
+.info strong.cyellow {
+    color: yellow;
+}
+.info strong.cgreen {
+    color: #00f811;
+}
 .qr-box {
     margin-top: 20px;
     display: flex;
@@ -298,16 +308,4 @@ a:hover {
 
 .qr-box canvas:hover {
     transform: scale(1.05);
-}
-
-.cred {
-    color: red;
-}
-
-cyellow {
-    color: yellow;
-}
-
-cgreen {
-    color: #00f811;
 }
