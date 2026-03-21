@@ -299,3 +299,15 @@ a:hover {
 .qr-box canvas:hover {
     transform: scale(1.05);
 }
+
+.cred {
+    color: red;
+}
+
+cyellow {
+    color: yellow;
+}
+
+cgreen {
+    color: #00f811;
+}

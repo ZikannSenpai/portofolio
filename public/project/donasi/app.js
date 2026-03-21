@@ -55,6 +55,9 @@ buttons.forEach(btn => {
 
         input.value = selectedNominal;
         statusQR.textContent = "Siap Dibuat";
+        statusQR.classList.add("cyellow");
+        statusQR.classList.remove("cred");
+        statusQR.classList.remove("cgreen");
         terpilih.textContent = "Rp " + selectedNominal.toLocaleString("id-ID");
     });
 });
@@ -67,17 +70,25 @@ submit.addEventListener("click", () => {
 
     if (!nominal || nominal <= 0) {
         statusQR.textContent = "nominal tidak boleh kosong";
+        statusQR.classList.add("cred");
+        statusQR.classList.remove("cyellow");
+        statusQR.classList.remove("cgreen");
         return;
     }
     const qris = generateQrisDynamic(parseInt(nominal));
 
     if (!qris) {
         statusQR.textContent = "gagal bikin QR 🥀";
+        statusQR.classList.add("cred");
+        statusQR.classList.remove("cyellow");
+        statusQR.classList.remove("cgreen");
         return;
     }
 
     statusQR.textContent = "Sudah Dibuat";
-
+    statusQR.classList.add("cgreen");
+    statusQR.classList.remove("cred");
+    statusQR.classList.remove("cyellow");
     // render jadi gambar
     QRCode.toCanvas(
         canvas,
@@ -87,7 +98,10 @@ submit.addEventListener("click", () => {
         },
         function (err) {
             if (err) {
-                statusQR.textContent = "error render 😭";
+                statusQR.textContent = "error render";
+                statusQR.classList.add("cred");
+                statusQR.classList.remove("cyellow");
+                statusQR.classList.remove("cgreen");
             }
         }
     );
