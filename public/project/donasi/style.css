@@ -240,6 +240,8 @@ a:hover {
 
 .img-content {
     margin: 10px;
+    display: block;
+    margin: auto;
 }
 .sumary {
     margin-top: 18px;
