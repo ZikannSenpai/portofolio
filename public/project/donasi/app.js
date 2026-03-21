@@ -78,7 +78,7 @@ submit.addEventListener("click", () => {
     const nominal = input.value || selectedNominal;
 
     if (!nominal || nominal <= 0) {
-        statusQR.textContent = "nominal tidak boleh kosong";
+        statusQR.textContent = "Masukan Nominal";
         statusQR.classList.add("cred");
         statusQR.classList.remove("cyellow");
         statusQR.classList.remove("cgreen");
