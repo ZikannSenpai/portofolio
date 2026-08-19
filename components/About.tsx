@@ -2,13 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const texts = [
-    "I build websites.",
-    "I create digital experiences.",
-    "I love Anime.",
-    "I solve problems with code.",
-    "I turn ideas into interfaces."
-];
+const texts = ["Full Stuck Developeler", "Dev Nyawit"];
 
 export default function About() {
     const [textIndex, setTextIndex] = useState(0);
@@ -70,8 +64,10 @@ export default function About() {
                         <div className="text-gray-300 leading-8 text-lg">
                             <p>
                                 Halo! Saya{" "}
-                                <strong className="text-white">Zika</strong>,
-                                seorang developer yang fokus pada pengembangan
+                                <strong className="text-white">
+                                    ZikaNyawDev
+                                </strong>
+                                , seorang developer yang fokus pada pengembangan
                                 website modern menggunakan teknologi JavaScript
                                 ecosystem.
                             </p>

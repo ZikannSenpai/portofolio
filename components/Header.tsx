@@ -46,21 +46,21 @@ export default function Header() {
                         </div>
 
                         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black leading-none uppercase tracking-tight">
-                            Zika
+                            Zikan
                             <span className="block text-[var(--blue)]">
-                                Nyaw
+                                Nyawit
                                 <span className="text-[var(--yellow)]">
-                                    Dev
+                                    Developeler
                                 </span>
                             </span>
                         </h1>
 
                         <div className="mt-8 max-w-2xl">
                             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                                Full Stack Web Developer yang suka membuat
-                                website modern, cepat, interaktif, dan sedikit{" "}
+                                Full ngestuck developeler, ngoding kalo lagi
+                                mau, gendeng dan{" "}
                                 <span className="text-[var(--yellow)] font-bold">
-                                    chaos.
+                                    kentir.
                                 </span>
                             </p>
                         </div>
@@ -116,7 +116,7 @@ export default function Header() {
                                 </div>
 
                                 <div className="absolute -bottom-5 -right-5 bg-white text-black border-4 border-black px-6 py-3 font-black rotate-6">
-                                    CODE & CREATE
+                                    NGODING & NGIDING
                                 </div>
                             </div>
                         </div>
