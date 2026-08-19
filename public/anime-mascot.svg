@@ -1,0 +1,83 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 300 400"
+>
+  <defs>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#168cff"/>
+      <stop offset="100%" stop-color="#0756a5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- hair -->
+  <path
+    d="M60 140
+       C40 70 90 20 150 25
+       C220 20 260 75 245 145
+       L215 115
+       L205 175
+       L175 135
+       L145 180
+       L120 135
+       L85 170
+       L90 115 Z"
+    fill="url(#hair)"
+    stroke="#050505"
+    stroke-width="10"
+  />
+
+  <!-- face -->
+  <ellipse
+    cx="150"
+    cy="170"
+    rx="75"
+    ry="80"
+    fill="#ffd6b3"
+    stroke="#050505"
+    stroke-width="8"
+  />
+
+  <!-- eyes -->
+  <ellipse cx="120" cy="170" rx="10" ry="15" fill="#050505"/>
+  <ellipse cx="180" cy="170" rx="10" ry="15" fill="#050505"/>
+
+  <!-- mouth -->
+  <path
+    d="M130 205 Q150 220 170 205"
+    fill="none"
+    stroke="#050505"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+  <!-- shirt -->
+  <path
+    d="M75 245 Q150 210 225 245 L255 390 L45 390 Z"
+    fill="#168cff"
+    stroke="#050505"
+    stroke-width="10"
+  />
+
+  <!-- shirt symbol -->
+  <path
+    d="M150 260 L175 305 L150 340 L125 305 Z"
+    fill="#ffd600"
+    stroke="#050505"
+    stroke-width="7"
+  />
+
+  <!-- arms -->
+  <path
+    d="M65 270 L25 325"
+    stroke="#ffd6b3"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M235 270 L275 325"
+    stroke="#ffd6b3"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+</svg>

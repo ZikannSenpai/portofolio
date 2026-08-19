@@ -1,0 +1,319 @@
+@import "tailwindcss";
+
+:root {
+    --black: #050505;
+    --black-2: #0a0a0a;
+    --blue: #168cff;
+    --blue-dark: #0756a5;
+    --yellow: #ffd600;
+    --white: #f5f5f5;
+    --gray: #a7a7a7;
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(
+            circle at 20% 10%,
+            rgba(22, 140, 255, 0.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 214, 0, 0.05),
+            transparent 20%
+        ),
+        #050505;
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--yellow);
+    color: black;
+}
+
+/* ========================================
+   COMIC
+======================================== */
+
+.comic-border {
+    border: 3px solid #fff;
+    box-shadow:
+        6px 6px 0 var(--yellow),
+        -4px -4px 0 var(--blue);
+}
+
+.comic-border-dark {
+    border: 3px solid #111;
+    box-shadow: 5px 5px 0 var(--yellow);
+}
+
+.comic-card {
+    background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px
+        ),
+        #0a0a0a;
+    background-size: 8px 8px;
+    border: 2px solid white;
+    position: relative;
+}
+
+.comic-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 8px,
+        rgba(255, 255, 255, 0.02) 8px,
+        rgba(255, 255, 255, 0.02) 10px
+    );
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero-grid {
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 35px 35px;
+}
+
+.halftone {
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.14) 1px,
+        transparent 1px
+    );
+    background-size: 7px 7px;
+}
+
+.speed-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.speed-lines::before,
+.speed-lines::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        115deg,
+        transparent 0%,
+        rgba(22, 140, 255, 0.08) 46%,
+        transparent 47%
+    );
+    transform: translateX(-20%);
+    animation: speed 7s linear infinite;
+}
+
+.speed-lines::after {
+    animation-delay: -3s;
+    opacity: 0.5;
+}
+
+/* ========================================
+   TYPEWRITER
+======================================== */
+
+.cursor {
+    border-right: 3px solid var(--yellow);
+    animation: blink 0.8s infinite;
+}
+
+/* ========================================
+   CLOUD
+======================================== */
+
+.cloud {
+    position: absolute;
+    width: 180px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 100px;
+    filter: drop-shadow(8px 8px 0 rgba(0, 0, 0, 0.25));
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 85px;
+    height: 85px;
+    left: 28px;
+    top: -38px;
+}
+
+.cloud::after {
+    width: 65px;
+    height: 65px;
+    right: 28px;
+    top: -26px;
+}
+
+/* ========================================
+   FLOATING ANIME
+======================================== */
+
+.anime-float {
+    animation: floatAnime 3s ease-in-out infinite;
+}
+
+.anime-shadow {
+    animation: animeShadow 3s ease-in-out infinite;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.comic-btn {
+    border: 3px solid white;
+    background: var(--blue);
+    color: white;
+    font-weight: 900;
+    box-shadow: 5px 5px 0 var(--yellow);
+    transition: transform 0.15s ease;
+}
+
+.comic-btn:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--yellow);
+}
+
+.comic-btn-yellow {
+    background: var(--yellow);
+    color: black;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes blink {
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes speed {
+    from {
+        transform: translateX(-20%);
+    }
+
+    to {
+        transform: translateX(20%);
+    }
+}
+
+@keyframes floatAnime {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-16px) rotate(1deg);
+    }
+}
+
+@keyframes animeShadow {
+    0%,
+    100% {
+        transform: scaleX(1);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: scaleX(0.75);
+        opacity: 0.12;
+    }
+}
+
+@keyframes pulseStatus {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+}
+
+.status-dot {
+    animation: pulseStatus 1.2s infinite;
+}
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border: 2px solid #050505;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--yellow);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 640px) {
+    .comic-border {
+        border-width: 2px;
+        box-shadow:
+            4px 4px 0 var(--yellow),
+            -2px -2px 0 var(--blue);
+    }
+
+    .cloud {
+        transform: scale(0.75);
+        transform-origin: left bottom;
+    }
+}
