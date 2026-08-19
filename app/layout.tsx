@@ -3,8 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
     title: "ZikaNyawDev — Web Developer",
-    description:
-        "Portfolio personal ZikaNyawDev — Full Stack Web Developer dengan manga comic style.",
+    description: "Portfolio personal ZikaNyawDev — Full Stack Web Developeler.",
     keywords: [
         "ZikaNyawDev",
         "Web Developer",

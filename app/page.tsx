@@ -5,7 +5,6 @@ import TechStack from "@/components/TechStack";
 import Projects from "@/components/Projects";
 import ApiStatus from "@/components/ApiStatus";
 import Contact from "@/components/Contact";
-import FloatingAnime from "@/components/FloatingAnime";
 import FloatingActions from "@/components/FloatingActions";
 
 export default function Home() {
@@ -43,8 +42,6 @@ export default function Home() {
                     </div>
                 </div>
             </footer>
-
-            <FloatingAnime />
 
             <FloatingActions />
         </main>
