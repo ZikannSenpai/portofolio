@@ -107,7 +107,7 @@ export default function Header() {
 
                                 <div className="absolute inset-4 bg-black rounded-full overflow-hidden border-4 border-[var(--yellow)]">
                                     <Image
-                                        src="/profile.jpg"
+                                        src="/profile.png"
                                         alt="ZikaNyawDev"
                                         fill
                                         className="object-cover"
